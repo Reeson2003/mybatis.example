@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="DummyMapper" >
+    <resultMap id="dummyResult" type="mybatis.domain.Dummy">
+        <id property="id" column="id" />
+        <result property="text" column="text"/>
+        <result property="date" column="date"/>
+    </resultMap>
+    <select id="getOne" resultType="mybatis.domain.Dummy" parameterType="long" resultMap="dummyResult">
+        SELECT id, text, date from dummy WHERE id = #{id}
+    </select>
+    <insert id="addOne" parameterType="mybatis.domain.Dummy"  keyProperty="id" useGeneratedKeys="true">
+        INSERT into dummy(text,date) VALUES(#{text}, #{date})
+    </insert>
+    <update id="updateOne" parameterType="mybatis.domain.Dummy">
+        UPDATE dummy SET text=#{text}, date =#{date} WHERE id =#{id}
+    </update>
+    <delete id="deleteOne" parameterType="long">
+        DELETE FROM dummy WHERE id =#{id}
+    </delete>
+</mapper>
