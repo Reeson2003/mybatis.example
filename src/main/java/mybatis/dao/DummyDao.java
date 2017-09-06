@@ -32,7 +32,7 @@ public class DummyDao {
 
     public static Dummy getOne(long id) {
         SqlSession session = MyBatisUtil.getSqlSessionFactory().openSession();
-        Dummy dummy = session.selectOne("com.concretepage.VillageMapper.selectVillage", id);
+        Dummy dummy = session.selectOne("DummyMApper.selectOne", id);
         session.close();
         return dummy;
     }
